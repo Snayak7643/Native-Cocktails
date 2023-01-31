@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
+import Button from './Button'
 
 const Card = () => {
   return (
@@ -12,12 +13,8 @@ const Card = () => {
         <Text style = {styles.heading}>Name</Text>
         <Text style = {styles.heading}>Glass</Text>
         <Text style = {styles.heading}>Alcoholic</Text>
-        <TouchableOpacity style={styles.buttonCover} onPress={()=>{}}>
-        <Text style = {styles.buttonText}>Details</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonCover} onPress={()=>{}}>
-        <Text style = {styles.buttonText}>Add To Cart</Text>
-      </TouchableOpacity>
+        <Button title = "Details"/>
+        <Button title = "Add To Cart"/>
         </View>
       </View>
   )
@@ -53,15 +50,4 @@ const styles = StyleSheet.create({
        textAlign : "center",
        margin : 2
     },
-    buttonCover:{
-        backgroundColor : "#476a2e",
-        padding : 10,
-        margin : 5,
-    },
-    buttonText :{
-        color : "white",
-        fontWeight : "bold",
-        textTransform : "uppercase",
-        textAlign : "center",
-    }
 })
