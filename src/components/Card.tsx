@@ -7,7 +7,7 @@ const Card = () => {
     
     <View style = {[styles.cocktail, styles.shadow]}>
       <View >
-        <Image source = {{uri : "."}} style = {styles.CardImage}/>
+        <Image source = {{uri : "https://wallpapercave.com/wp/wp2131819.jpg"}} style = {styles.CardImage}/>
       </View>
       <View style = {styles.cocktailFooter}>
         <Text style = {styles.heading}>Name</Text>
@@ -24,11 +24,12 @@ export default Card
 
 const styles = StyleSheet.create({
     cocktail:{
-        width : "90%",
+        width : "95%",
        backgroundColor : "#fff",
        marginBottom: 10,
        display : "flex",
        borderRadius : 5,
+       margin : 5,
     },
     shadow :{
         shadowColor: '#171717',
@@ -38,8 +39,10 @@ const styles = StyleSheet.create({
         elevation: 20,
     },
     CardImage:{
-        backgroundColor: "black",
+        width : "100%",
         height : 200,
+        resizeMode: 'center',
+        backgroundColor : "black",
     },
     cocktailFooter:{
         padding : 20,

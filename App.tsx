@@ -1,12 +1,14 @@
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import Card from './src/components/Card';
+import CocktailsList from './src/components/CocktailsList';
 
 const App = () => {
   return (
     <SafeAreaView style = {styles.container}>
-      <Text>Cocktails</Text>
-      <Card/>
+      <Text style = {styles.haeding}>Cocktails</Text>
+      <View style = {styles.list}>
+       <CocktailsList/>
+      </View>
       </SafeAreaView>
   );
 };
@@ -16,7 +18,15 @@ export default App;
 const styles = StyleSheet.create({
   container : {
      flex : 1,
-     justifyContent : "center",
-     alignItems : "center"
+     justifyContent : 'space-around'
+  },
+  haeding :{
+    fontWeight:"bold",
+    fontSize : 20,
+    textAlign : "center",
+    marginVertical : 10,
+  },
+  list :{
+    marginVertical: 30,
   }
 });
