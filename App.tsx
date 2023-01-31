@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import React from 'react';
 import Home from './src/screens/Home';
+import About from './src/screens/About';
 
 
 const App = () => {
