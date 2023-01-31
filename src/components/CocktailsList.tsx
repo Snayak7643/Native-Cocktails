@@ -5,7 +5,11 @@ import Card from './Card'
 const CocktailsList = () => {
   return (
     <View style = {styles.container}>
-      <FlatList data={[0,1,2,3,4,5]} renderItem = {({item})=> <Card key={item}/>}/>
+      {
+        [0,1,2,3,4,5].map((item)=>{
+            return(<Card key = {item}/>)
+        })
+      }
     </View>
   )
 }
