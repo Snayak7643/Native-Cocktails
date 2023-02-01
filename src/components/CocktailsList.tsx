@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, {useContext} from 'react'
 import Card from './Card'
 import CocktailContext from '../../contexts/CocktailContext'
@@ -6,6 +6,14 @@ import CocktailContext from '../../contexts/CocktailContext'
 const CocktailsList = () => {
 
     const { cocktails, loading } = useContext(CocktailContext);
+
+    if(loading){
+      return(
+        <View>
+          <Text>Loading...</Text>
+        </View>
+      )
+    }
 
   return (
     <View style = {styles.container}>

@@ -1,41 +1,110 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import React,{useState, useEffect, useCallback} from 'react'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { StackNavigatorType } from '../../App';
+import { cocktailDetailType } from '../../types';
+import { SINGLE_URL } from '../../constants/URL';
 
-const Cocktail = () => {
+type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktail_Details">;
+
+const Cocktail = ({route}:PropType ) => {
+
+    const id = route.params.id;
+    
+    const [loading, setLoading] = useState<boolean>(true);
+    const [cocktail, setCocktail] = useState<cocktailDetailType>(
+        {} as cocktailDetailType
+      );
+    
+      const fetchTheCocktail = useCallback(async () => {
+        console.log("fecthing single");
+        setLoading(true);
+        try {
+          const response = await fetch(SINGLE_URL + id);
+          const res = await response.json();
+          const drink = res.drinks;
+          if (drink && drink.length) {
+            const {
+              idDrink,
+              strDrink,
+              strCategory,
+              strAlcoholic,
+              strGlass,
+              strDrinkThumb,
+              strInstructions,
+            } = drink[0];
+            const { strIngredient1, strIngredient2 } = drink[0];
+            const ingredients = [strIngredient1, strIngredient2];
+            setCocktail({
+              id: idDrink,
+              name: strDrink,
+              category: strCategory,
+              alcoholic: strAlcoholic,
+              glass: strGlass,
+              img: strDrinkThumb,
+              ingredients,
+              instructions: strInstructions,
+            });
+            setLoading(false);
+            return;
+          }
+          setCocktail({} as cocktailDetailType);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
+      }, [id]);
+    
+      useEffect(() => {
+        fetchTheCocktail();
+      }, [id, fetchTheCocktail]);
+
+      const { name, category, glass, alcoholic, img, ingredients, instructions } =
+    cocktail;
+
+    //Return
+
+    if(loading){
+        return(<View>
+            <Text>Loading...</Text>
+        </View>)
+    }
+
   return (
     <View style = {styles.cocktailWrappper}>
       <View style = {[styles.imageContainer, styles.shadow]} >
-      <Image source = {{uri : "https://wallpapercave.com/wp/wp2131819.jpg"}} style={styles.cocktailImage}/>
+      <Image source = {{uri : img}} style={styles.cocktailImage}/>
       </View>
       <View style = {styles.cocktailDataWrapper}>
         <View style = {styles.cocktailData}>
             <Text style = {styles.dataHeading}>NAME :</Text>
-            <Text style= {styles.dataInfo}>name</Text>
+            <Text style= {styles.dataInfo}>{name}</Text>
         </View>
         <View style = {styles.cocktailData}>
             <Text style = {styles.dataHeading}>CATEGORY :</Text>
-            <Text style= {styles.dataInfo}>alcoholic</Text>
+            <Text style= {styles.dataInfo}>{category}</Text>
         </View>
         <View style = {styles.cocktailData}>
             <Text style = {styles.dataHeading}>INFO :</Text>
-            <Text style= {styles.dataInfo}>alcoholic</Text>
+            <Text style= {styles.dataInfo}>{alcoholic}</Text>
         </View>
         <View style = {styles.cocktailData}>
             <Text style = {styles.dataHeading}>GLASS :</Text>
-            <Text style= {styles.dataInfo}>alcoholic</Text>
+            <Text style= {styles.dataInfo}>{glass}</Text>
         </View>
         <View style = {styles.cocktailData}>
             <Text style = {styles.dataHeading}>INSTRUCTIONS :</Text>
-            <Text style= {styles.dataInfo}>alcoholic</Text>
+            <Text style= {styles.dataInfo}>{instructions}</Text>
         </View>
         <View style = {styles.cocktailData}>
             <Text style = {styles.dataHeading}>INGREDIENTS :</Text>
-            <Text style= {styles.dataInfo}>alcoholic alcoholic alcoholic alcoholic alcoholic alcoholic</Text>
+            <Text style= {styles.dataInfo}>{ingredients[0]}, {ingredients[1]}</Text>
         </View>
       </View>
     </View>
   )
-}
+  }
 
 export default Cocktail; 
 

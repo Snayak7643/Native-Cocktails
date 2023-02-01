@@ -10,7 +10,7 @@ import { ALL_URL } from './constants/URL';
 import CocktailContext from './contexts/CocktailContext';
 
 export type StackNavigatorType ={
- Cocktail_Details : undefined;
+ Cocktail_Details : {id : number};
  Cocktails : undefined;
  About : undefined;
 };

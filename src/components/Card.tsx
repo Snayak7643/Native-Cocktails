@@ -14,7 +14,7 @@ const Card : React.FC<PropType> = ({cocktail}) => {
 
     const navigation = useNavigation<NativeStackNavigationProp<StackNavigatorType>>();
 
-    const {name, glass, alcoholic, img} = cocktail;
+    const {id, name, glass, alcoholic, img} = cocktail;
 
   return (
     
@@ -26,7 +26,7 @@ const Card : React.FC<PropType> = ({cocktail}) => {
         <Text style = {styles.heading}>{name}</Text>
         <Text style = {styles.heading}>{glass}</Text>
         <Text style = {styles.heading}>{alcoholic}</Text>
-        <Button title = "Details" onPress={()=>{navigation.navigate("Cocktail_Details")}}/>
+        <Button title = "Details" onPress={()=>{navigation.navigate("Cocktail_Details", {id})}}/>
         <Button title = "Add To Cart" onPress={()=>{}}/>
         </View>
       </View>
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
         padding : 20,
     },
     heading :{
-       color :"#989ea6",
        fontWeight : "bold",
        textAlign : "center",
        margin : 2

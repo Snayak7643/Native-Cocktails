@@ -11,7 +11,7 @@ type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktails">;
 
 const Home = ({navigation}:PropType) => {
   return (
-    <ScrollView stickyHeaderIndices={[0]}>
+    <ScrollView style = {styles.wrapper} stickyHeaderIndices={[0]}>
       <SearchBox/>
       <View style = {styles.list}>
        <CocktailsList/>
@@ -26,6 +26,9 @@ const Home = ({navigation}:PropType) => {
 export default Home
 
 const styles = StyleSheet.create({
+    wrapper:{
+        backgroundColor : "rgba(192, 240, 158, 0.2)",
+    },
       list :{
         marginVertical: 30,
       },
