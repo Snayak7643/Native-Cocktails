@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React,{useCallback, useState, useEffect} from 'react';
+import React,{useCallback, useState, useEffect, EventHandler} from 'react';
 import Home from './src/screens/Home';
 import About from './src/screens/About';
 import Cocktail from './src/screens/Cocktail';
@@ -21,12 +21,17 @@ const App = () => {
 
   const [cocktails, setCocktails] = useState<cocktailType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchterm] = useState<any>("");
+
+  const handleChange = (newSearchTerm : string)=>{
+    setSearchterm(newSearchTerm);
+  }
 
   const fetchCocktails = useCallback(async () => {
     setLoading(true);
     try {
       console.log("fetching");
-      const response = await fetch(ALL_URL);
+      const response = await fetch(ALL_URL + searchTerm);
       const res = await response.json();
       if (res.drinks) {
         const desiredCocktails = res.drinks.map((drink: any) => {
@@ -50,14 +55,14 @@ const App = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [searchTerm]);
 
   useEffect(()=>{
     fetchCocktails();
-  },[]);
+  },[searchTerm]);
 
   return (
-    <CocktailContext.Provider value = {{cocktails, loading, searchTerm : "", handleChange : ()=>{}}}>
+    <CocktailContext.Provider value = {{cocktails, loading, searchTerm, handleChange }}>
     <NavigationContainer>
         <Stack.Navigator>
            <Stack.Screen name = "Cocktails" component={Home}/>

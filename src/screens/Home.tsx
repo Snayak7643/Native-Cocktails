@@ -11,7 +11,10 @@ type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktails">;
 const Home = ({navigation}:PropType) => {
   return (
     <ScrollView style = {styles.wrapper} stickyHeaderIndices={[0]}>
-      <SearchBox/>
+      <View>
+         <SearchBox/>
+         <Button title="Cart" onPress ={()=>{}}/>
+      </View>
       <View style = {styles.list}>
        <CocktailsList/>
       </View>
@@ -33,5 +36,9 @@ const styles = StyleSheet.create({
       },
       aboutButton:{
         marginBottom:30,
-      }
+      },
+      navbar:{
+        flex : 1,
+        flexDirection: "row",
+      },
 })

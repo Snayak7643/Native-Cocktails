@@ -21,7 +21,7 @@ export type cocktailType = {
     cocktails: cocktailType[];
     loading: boolean;
     searchTerm: string;
-    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (newSearchTerm :string) => void;
   };
   
   export type stateType = {

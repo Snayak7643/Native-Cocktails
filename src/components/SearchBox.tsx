@@ -1,11 +1,15 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import CocktailContext from '../../contexts/CocktailContext'
 
 const SearchBox = () => {
+
+  const {handleChange} = useContext(CocktailContext);
+
   return (
     <View style = {[styles.searchContainer, styles.shadow]}>
       <Text>Search Your Favourite Cocktail</Text>
-      <TextInput style = {styles.input} onChangeText = {()=>{}} placeholder = "Serach Here..."/>
+      <TextInput style = {styles.input} onChangeText = {(newSearchTerm)=>{handleChange(newSearchTerm)}} placeholder = "Serach Here..."/>
     </View>
   )
 }
