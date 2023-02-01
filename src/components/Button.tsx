@@ -3,11 +3,12 @@ import React from 'react'
 
 type PropType ={
     title : string;
+    onPress : ()=>void;
 }
 
-const Button : React.FunctionComponent<PropType> = ({title}) => {
+const Button : React.FunctionComponent<PropType> = ({title, onPress}) => {
   return (
-    <TouchableOpacity style={styles.buttonCover} onPress={()=>{}}>
+    <TouchableOpacity style={styles.buttonCover} onPress={onPress}>
         <Text style = {styles.buttonText}>{title}</Text>
       </TouchableOpacity>
   )

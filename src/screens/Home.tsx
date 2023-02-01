@@ -1,15 +1,23 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import React from 'react';
 import SearchBox from '../components/SearchBox';
 import CocktailsList from '../components/CocktailsList';
+import Button from '../components/Button';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackNavigatorType } from '../../App';
 
-const Home = () => {
+
+type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktails">;
+
+const Home = ({navigation}:PropType) => {
   return (
-    <ScrollView stickyHeaderIndices={[1]}>
-      <Text style = {styles.haeding}>Cocktails</Text>
+    <ScrollView stickyHeaderIndices={[0]}>
       <SearchBox/>
       <View style = {styles.list}>
        <CocktailsList/>
+      </View>
+      <View style = {styles.aboutButton}>
+      <Button title = "About Us" onPress={()=>{navigation.navigate("About")}}/>
       </View>
       </ScrollView>
   )
@@ -18,14 +26,10 @@ const Home = () => {
 export default Home
 
 const styles = StyleSheet.create({
-    haeding :{
-        fontWeight:"bold",
-        fontSize : 20,
-        textAlign : "center",
-        marginVertical : 10,
-        elevation: 10,
-      },
       list :{
         marginVertical: 30,
+      },
+      aboutButton:{
+        marginBottom:30,
       }
 })

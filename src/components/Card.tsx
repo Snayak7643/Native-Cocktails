@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import Button from './Button'
 
@@ -7,14 +7,14 @@ const Card = () => {
     
     <View style = {[styles.cocktail, styles.shadow]}>
       <View >
-        <Image source = {{uri : "https://wallpapercave.com/wp/wp2131819.jpg"}} style = {styles.CardImage}/>
+        <Image source = {{uri : "https://wallpapercave.com/wp/wp2131819.jpg"}} style = {styles.cardImage}/>
       </View>
       <View style = {styles.cocktailFooter}>
         <Text style = {styles.heading}>Name</Text>
         <Text style = {styles.heading}>Glass</Text>
         <Text style = {styles.heading}>Alcoholic</Text>
-        <Button title = "Details"/>
-        <Button title = "Add To Cart"/>
+        <Button title = "Details" onPress={()=>{}}/>
+        <Button title = "Add To Cart" onPress={()=>{}}/>
         </View>
       </View>
   )
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         shadowRadius : 3,
         elevation: 20,
     },
-    CardImage:{
+    cardImage:{
         width : "100%",
         height : 200,
         resizeMode: 'center',
