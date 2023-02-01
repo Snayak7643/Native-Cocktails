@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     buttonCover:{
         backgroundColor : "#476a2e",
         padding : 10,
-        margin : 5,
+        margin : 2,
     },
     buttonText :{
         color : "white",

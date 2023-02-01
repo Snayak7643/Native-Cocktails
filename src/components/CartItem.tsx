@@ -1,7 +1,6 @@
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useContext } from 'react'
 import CartContext from '../../contexts/CartContext'
-import Button from './Button';
 import { decrease, increase, remove } from '../../Reducers/actions';
 
 const CartItem = () => {
@@ -13,7 +12,9 @@ const CartItem = () => {
        {state.cartCocktails.map((cocktail)=>{
         return (
             <View key = {cocktail.id} style = {styles.grid}>
+                <TouchableOpacity onPress={()=>{}}>
                 <Image source={{uri : cocktail.img}} style = {styles.image}/>
+                </TouchableOpacity>
                 <View>
                     <Text style = {styles.boldText}>{cocktail.name}</Text>
                 </View>
