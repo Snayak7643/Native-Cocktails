@@ -4,21 +4,28 @@ import Button from './Button'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { StackNavigatorType } from '../../App'
+import { cocktailType } from '../../types'
 
-const Card = () => {
+type PropType = {
+    cocktail : cocktailType;
+}
+
+const Card : React.FC<PropType> = ({cocktail}) => {
 
     const navigation = useNavigation<NativeStackNavigationProp<StackNavigatorType>>();
+
+    const {name, glass, alcoholic, img} = cocktail;
 
   return (
     
     <View style = {[styles.cocktail, styles.shadow]}>
       <View >
-        <Image source = {{uri : "https://wallpapercave.com/wp/wp2131819.jpg"}} style = {styles.cardImage}/>
+        <Image source = {{uri : img}} style = {styles.cardImage}/>
       </View>
       <View style = {styles.cocktailFooter}>
-        <Text style = {styles.heading}>Name</Text>
-        <Text style = {styles.heading}>Glass</Text>
-        <Text style = {styles.heading}>Alcoholic</Text>
+        <Text style = {styles.heading}>{name}</Text>
+        <Text style = {styles.heading}>{glass}</Text>
+        <Text style = {styles.heading}>{alcoholic}</Text>
         <Button title = "Details" onPress={()=>{navigation.navigate("Cocktail_Details")}}/>
         <Button title = "Add To Cart" onPress={()=>{}}/>
         </View>

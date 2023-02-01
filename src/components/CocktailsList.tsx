@@ -1,13 +1,17 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import React, {useContext} from 'react'
 import Card from './Card'
+import CocktailContext from '../../contexts/CocktailContext'
 
 const CocktailsList = () => {
+
+    const { cocktails, loading } = useContext(CocktailContext);
+
   return (
     <View style = {styles.container}>
       {
-        [0,1,2,3,4,5].map((item)=>{
-            return(<Card key = {item}/>)
+        cocktails.map((cocktail)=>{
+            return(<Card key = {cocktail.id} cocktail = {cocktail}/>)
         })
       }
     </View>
