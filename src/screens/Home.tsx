@@ -6,7 +6,6 @@ import Button from '../components/Button';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StackNavigatorType } from '../../App';
 
-
 type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktails">;
 
 const Home = ({navigation}:PropType) => {

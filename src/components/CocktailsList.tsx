@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, {useContext} from 'react'
 import Card from './Card'
 import CocktailContext from '../../contexts/CocktailContext'
+import Loader from './Loader'
 
 const CocktailsList = () => {
 
@@ -9,9 +10,7 @@ const CocktailsList = () => {
 
     if(loading){
       return(
-        <View>
-          <Text>Loading...</Text>
-        </View>
+       <Loader/>
       )
     }
 

@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { StackNavigatorType } from '../../App';
 import { cocktailDetailType } from '../../types';
 import { SINGLE_URL } from '../../constants/URL';
+import Loader from '../components/Loader';
 
 type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktail_Details">;
 
@@ -66,9 +67,7 @@ const Cocktail = ({route}:PropType ) => {
     //Return
 
     if(loading){
-        return(<View>
-            <Text>Loading...</Text>
-        </View>)
+        return(<Loader/>);
     }
 
   return (
