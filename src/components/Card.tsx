@@ -1,8 +1,14 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import Button from './Button'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { StackNavigatorType } from '../../App'
 
 const Card = () => {
+
+    const navigation = useNavigation<NativeStackNavigationProp<StackNavigatorType>>();
+
   return (
     
     <View style = {[styles.cocktail, styles.shadow]}>
@@ -13,7 +19,7 @@ const Card = () => {
         <Text style = {styles.heading}>Name</Text>
         <Text style = {styles.heading}>Glass</Text>
         <Text style = {styles.heading}>Alcoholic</Text>
-        <Button title = "Details" onPress={()=>{}}/>
+        <Button title = "Details" onPress={()=>{navigation.navigate("Cocktail_Details")}}/>
         <Button title = "Add To Cart" onPress={()=>{}}/>
         </View>
       </View>
