@@ -10,11 +10,13 @@ import { useFetchOnSearch } from './src/Hooks/useFetchOnSearch';
 import cartReducer from './Reducers/cartReducer';
 import { initialCartState } from './constants/initialState';
 import CartContext from './contexts/CartContext';
+import Cart from './src/screens/Cart';
 
 export type StackNavigatorType ={
  Cocktail_Details : {id : number};
  Cocktails : undefined;
  About : undefined;
+ Cart : undefined;
 };
 
 const Stack = createNativeStackNavigator<StackNavigatorType>();
@@ -29,8 +31,9 @@ const App = () => {
     <CocktailContext.Provider value = {value}>
       <CartContext.Provider value = {{state, dispatch}}>
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator initialRouteName="Cocktails">
               <Stack.Screen name = "Cocktails" component={Home}/>
+              <Stack.Screen name = "Cart" component={Cart}/>
               <Stack.Screen name = "Cocktail_Details" component ={Cocktail}/>
               <Stack.Screen name = "About" component={About}/>
             </Stack.Navigator>

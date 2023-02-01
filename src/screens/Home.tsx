@@ -17,7 +17,7 @@ const {state} = useContext(CartContext);
     <ScrollView style = {styles.wrapper} stickyHeaderIndices={[0]}>
       <View>
          <SearchBox/>
-         <Button title={"Cart (" + state.totalQuantity + ")"} onPress ={()=>{}}/>
+         <Button title={"Cart (" + state.totalQuantity + ")"} onPress ={()=>{navigation.navigate("Cart")}}/>
       </View>
       <View style = {styles.list}>
        <CocktailsList/>
