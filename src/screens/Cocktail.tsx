@@ -2,8 +2,6 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import React,{useState, useEffect, useCallback} from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { StackNavigatorType } from '../../App';
-import { cocktailDetailType } from '../../types';
-import { SINGLE_URL } from '../../constants/URL';
 import Loader from '../components/Loader';
 import useFetchWithId from '../Hooks/useFetchWithId';
 

@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from './Button'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { StackNavigatorType } from '../../App'
 import { cocktailType } from '../../types'
+import CartContext from '../../contexts/CartContext'
+import { add } from '../../Reducers/actions'
 
 type PropType = {
     cocktail : cocktailType;
@@ -13,6 +15,8 @@ type PropType = {
 const Card : React.FC<PropType> = ({cocktail}) => {
 
     const navigation = useNavigation<NativeStackNavigationProp<StackNavigatorType>>();
+
+    const {dispatch} = useContext(CartContext);
 
     const {id, name, glass, alcoholic, img} = cocktail;
 
@@ -27,7 +31,7 @@ const Card : React.FC<PropType> = ({cocktail}) => {
         <Text style = {styles.heading}>{glass}</Text>
         <Text style = {styles.heading}>{alcoholic}</Text>
         <Button title = "Details" onPress={()=>{navigation.navigate("Cocktail_Details", {id})}}/>
-        <Button title = "Add To Cart" onPress={()=>{}}/>
+        <Button title = "Add To Cart" onPress={()=>{dispatch(add(cocktail))}}/>
         </View>
       </View>
   )

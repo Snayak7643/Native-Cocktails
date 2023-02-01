@@ -1,19 +1,23 @@
 import { StyleSheet, View, ScrollView } from 'react-native'
-import React from 'react';
+import React, { useContext } from 'react';
 import SearchBox from '../components/SearchBox';
 import CocktailsList from '../components/CocktailsList';
 import Button from '../components/Button';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StackNavigatorType } from '../../App';
+import CartContext from '../../contexts/CartContext';
 
 type PropType = NativeStackScreenProps<StackNavigatorType, "Cocktails">;
 
 const Home = ({navigation}:PropType) => {
+
+const {state} = useContext(CartContext);
+
   return (
     <ScrollView style = {styles.wrapper} stickyHeaderIndices={[0]}>
       <View>
          <SearchBox/>
-         <Button title="Cart" onPress ={()=>{}}/>
+         <Button title={"Cart (" + state.totalQuantity + ")"} onPress ={()=>{}}/>
       </View>
       <View style = {styles.list}>
        <CocktailsList/>
