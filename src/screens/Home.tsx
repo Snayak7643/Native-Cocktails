@@ -13,17 +13,25 @@ const Home = ({navigation}:PropType) => {
 
 const {state} = useContext(CartContext);
 
+const navigateToCart = ()=>{
+   navigation.navigate("Cart");
+};
+
+const navigateToAbout = ()=>{
+  navigation.navigate("About");
+};
+
   return (
     <ScrollView style = {styles.wrapper} stickyHeaderIndices={[0]}>
       <View>
          <SearchBox/>
-         <Button title={"Cart (" + state.totalQuantity + ")"} onPress ={()=>{navigation.navigate("Cart")}}/>
+         <Button title={"Cart (" + state.totalQuantity + ")"} onPress ={navigateToCart}/>
       </View>
       <View style = {styles.list}>
        <CocktailsList/>
       </View>
       <View style = {styles.aboutButton}>
-      <Button title = "About Us" onPress={()=>{navigation.navigate("About")}}/>
+      <Button title = "About Us" onPress={navigateToAbout}/>
       </View>
       </ScrollView>
   )
@@ -42,7 +50,6 @@ const styles = StyleSheet.create({
         marginBottom:30,
       },
       navbar:{
-        flex : 1,
         flexDirection: "row",
       },
 })

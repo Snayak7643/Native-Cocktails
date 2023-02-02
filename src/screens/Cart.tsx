@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import React, { useContext } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CartContext from '../../contexts/CartContext'
@@ -16,14 +16,14 @@ const Cart = () => {
   }
 
   return (
-   <SafeAreaView>
+   <ScrollView>
       <CartItem/>
       <View style = {styles.divider}/>
       <View style = {styles.total}>
         <Text style={styles.boldText}>Total : </Text>
         <Text>${state.totalAmount}</Text>
       </View>
-   </SafeAreaView>
+   </ScrollView>
   )
 }
 
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     total:{
         marginBottom : 25,
         marginVertical: 5,
-        marginHorizontal : 15,
-        width : "95%",
+        marginHorizontal : 25,
+        width : "85%",
       flexDirection:"row",
       justifyContent : "space-between",
     },
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent : "center",
         alignItems : "center",
-        width : "100%",
+
     },
     noItemsText:{
         fontWeight:"bold",

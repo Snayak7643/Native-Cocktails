@@ -6,33 +6,39 @@ import { decrease, increase, remove } from '../../Reducers/actions';
 const CartItem = () => {
 
     const {state, dispatch} = useContext(CartContext);
+    
 
   return (
     <ScrollView>
        {state.cartCocktails.map((cocktail)=>{
+
+       const onPressIncrease = ()=>{
+           dispatch(increase(cocktail.id))
+       };
+       
+       const onPressDecrease = ()=>{
+            if(cocktail.quantity === 1){
+                dispatch(remove(cocktail.id));
+                return;
+            }
+            dispatch(decrease(cocktail.id));
+       };
+
         return (
             <View key = {cocktail.id} style = {styles.grid}>
-                <TouchableOpacity onPress={()=>{}}>
                 <Image source={{uri : cocktail.img}} style = {styles.image}/>
-                </TouchableOpacity>
                 <View>
                     <Text style = {styles.boldText}>{cocktail.name}</Text>
                 </View>
                 <View style = {styles.quantityWrapper}>
-                    <TouchableOpacity onPress={()=>{dispatch(increase(cocktail.id))}}>
+                    <TouchableOpacity onPress={onPressIncrease}>
                         <Text style = {styles.boldText}>+</Text>
                     </TouchableOpacity>
                     <Text style = {styles.boldText}>
                         {cocktail.quantity}
                     </Text>
                     <TouchableOpacity
-                    onPress ={()=>{
-                        if(cocktail.quantity === 1){
-                            dispatch(remove(cocktail.id));
-                            return;
-                        }
-                        dispatch(decrease(cocktail.id));
-                    }}>
+                    onPress ={onPressDecrease}>
                         <Text style = {styles.boldText}>-</Text>
                     </TouchableOpacity>
                 </View>

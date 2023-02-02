@@ -9,7 +9,7 @@ const SearchBox = () => {
   return (
     <View style = {[styles.searchContainer, styles.shadow]}>
       <Text>Search Your Favourite Cocktail</Text>
-      <TextInput style = {styles.input} onChangeText = {(newSearchTerm)=>{handleChange(newSearchTerm)}} placeholder = "Serach Here..."/>
+      <TextInput style = {styles.input} onChangeText = {handleChange} placeholder = "Serach Here..."/>
     </View>
   )
 }

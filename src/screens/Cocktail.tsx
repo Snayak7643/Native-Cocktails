@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React,{useState, useEffect, useCallback} from 'react'
+import { StyleSheet, Text, View, Image , ScrollView} from 'react-native'
+import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { StackNavigatorType } from '../../App';
 import Loader from '../components/Loader';
@@ -21,6 +21,7 @@ const Cocktail = ({route}:PropType ) => {
     }
 
   return (
+    <ScrollView>
     <View style = {styles.cocktailWrappper}>
       <View style = {[styles.imageContainer, styles.shadow]} >
       <Image source = {{uri : img}} style={styles.cocktailImage}/>
@@ -52,6 +53,7 @@ const Cocktail = ({route}:PropType ) => {
         </View>
       </View>
     </View>
+    </ScrollView>
   )
   }
 
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         alignItems : "center",
         padding : 10,
         backgroundColor : "rgba(192, 240, 158, 0.2)",
-        
+        minHeight : "100%",
     }
     ,
     imageContainer:{

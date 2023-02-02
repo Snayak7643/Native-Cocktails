@@ -14,11 +14,18 @@ type PropType = {
 
 const Card : React.FC<PropType> = ({cocktail}) => {
 
+  const {dispatch} = useContext(CartContext);
+  const {id, name, glass, alcoholic, img} = cocktail;
+
+    const onPressAdd = ()=>{
+      dispatch(add(cocktail));
+    };
+
+    const onPressNavigate = ()=>{
+      navigation.navigate("Cocktail_Details", {id});
+    };
+
     const navigation = useNavigation<NativeStackNavigationProp<StackNavigatorType>>();
-
-    const {dispatch} = useContext(CartContext);
-
-    const {id, name, glass, alcoholic, img} = cocktail;
 
   return (
     
@@ -30,8 +37,8 @@ const Card : React.FC<PropType> = ({cocktail}) => {
         <Text style = {styles.heading}>{name}</Text>
         <Text style = {styles.heading}>{glass}</Text>
         <Text style = {styles.heading}>{alcoholic}</Text>
-        <Button title = "Details" onPress={()=>{navigation.navigate("Cocktail_Details", {id})}}/>
-        <Button title = "Add To Cart" onPress={()=>{dispatch(add(cocktail))}}/>
+        <Button title = "Details" onPress={onPressNavigate}/>
+        <Button title = "Add To Cart" onPress={onPressAdd}/>
         </View>
       </View>
   )
@@ -44,7 +51,6 @@ const styles = StyleSheet.create({
         width : "95%",
        backgroundColor : "#fff",
        marginBottom: 10,
-       display : "flex",
        borderRadius : 5,
        margin : 5,
     },

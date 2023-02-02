@@ -29,7 +29,7 @@ export default CocktailsList
 
 const styles = StyleSheet.create({
     container : {
-        display : "flex",
+        flex : 1,
         justifyContent : "center",
         margin : 10,
     }
