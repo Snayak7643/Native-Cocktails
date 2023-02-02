@@ -27,11 +27,11 @@ const navigateToAbout = ()=>{
          <SearchBox/>
          <Button title={"Cart (" + state.totalQuantity + ")"} onPress ={navigateToCart}/>
       </View>
+      <View>
+      <Button title = "About Us" onPress={navigateToAbout}/>
+      </View>
       <View style = {styles.list}>
        <CocktailsList/>
-      </View>
-      <View style = {styles.aboutButton}>
-      <Button title = "About Us" onPress={navigateToAbout}/>
       </View>
       </ScrollView>
   )
@@ -45,9 +45,6 @@ const styles = StyleSheet.create({
     },
       list :{
         marginVertical: 30,
-      },
-      aboutButton:{
-        marginBottom:30,
       },
       navbar:{
         flexDirection: "row",

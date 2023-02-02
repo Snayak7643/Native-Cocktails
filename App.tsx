@@ -31,7 +31,7 @@ const App = () => {
     <CocktailContext.Provider value = {value}>
       <CartContext.Provider value = {{state, dispatch}}>
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Cocktails">
+            <Stack.Navigator initialRouteName="Cocktails" screenOptions={{headerBackTitleVisible: false}}>
               <Stack.Screen name = "Cocktails" component={Home}/>
               <Stack.Screen name = "Cart" component={Cart}/>
               <Stack.Screen name = "Cocktail_Details" component ={Cocktail}/>

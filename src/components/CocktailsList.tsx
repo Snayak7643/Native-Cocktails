@@ -13,6 +13,13 @@ const CocktailsList = () => {
        <Loader/>
       )
     }
+    else if(cocktails.length === 0){
+      return(
+        <View style = {styles.noItems}>
+          <Text style = {styles.noItemsText}>No Items Found</Text>
+        </View>
+      )
+    }
 
   return (
     <View style = {styles.container}>
@@ -32,5 +39,15 @@ const styles = StyleSheet.create({
         flex : 1,
         justifyContent : "center",
         margin : 10,
-    }
+    },
+    noItems:{
+      flex:1,
+      justifyContent : "center",
+      alignItems : "center",
+
+  },
+  noItemsText:{
+      fontWeight:"bold",
+      fontSize : 40,
+  },
 })
