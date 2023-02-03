@@ -23,6 +23,7 @@ const Card : React.FC<PropType> = ({cocktail}) => {
 
     const onPressNavigate = ()=>{
       navigation.navigate("Cocktail_Details", {id});
+      
     };
 
     const navigation = useNavigation<NativeStackNavigationProp<StackNavigatorType>>();
